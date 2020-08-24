@@ -1,0 +1,25 @@
+.todo-form {
+    background-color: white;
+    margin-top: 2px;
+
+    .mdc-list {
+        padding: 0;
+    }
+    
+    .mdc-text-field {
+        width: 100%;
+    }
+
+    .mdc-floating-label--float-above {
+        display: none;
+    }
+    
+    .mdc-line-ripple {
+        &::before{
+            display: none;
+        }
+        &::after{
+            display: none;
+        }
+    }
+}

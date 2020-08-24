@@ -1,11 +1,18 @@
 import React from 'react';
 import {
-    Checkbox, ListItem, ListItemGraphic, ListItemText
+    Checkbox, Icon, IconButton,
+    ListItem, ListItemGraphic, ListItemText, ListItemMeta
 } from 'mdc-react';
 
-export default function TodoListItem({ todo, onStatusChange: onCompleteChange }) {
+import 'components/TodoListItem/index.scss';
+
+export default function TodoListItem({
+    todo, 
+    onCompleteChange,
+    onDelete
+ }) {
     return (
-        <ListItem>
+        <ListItem className="todo-list-item">
             <ListItemGraphic>
                 <Checkbox 
                     checked={todo.completed}
@@ -14,6 +21,12 @@ export default function TodoListItem({ todo, onStatusChange: onCompleteChange })
             </ListItemGraphic>
 
             <ListItemText>{todo.title}</ListItemText>
+
+            <ListItemMeta>
+                <IconButton onClick={() => onDelete(todo.id)}>
+                    <Icon>delete</Icon>
+                </IconButton>
+            </ListItemMeta>
         </ListItem>
     )
 }
