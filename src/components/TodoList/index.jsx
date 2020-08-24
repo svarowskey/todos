@@ -10,6 +10,7 @@ export default function TodoList({ match }) {
     const [todos, setTodos] = useState([]);
     const db = useContext(DBContext);
  
+    console.log(match);
     useEffect(() => {
         db.get('todos')(collection =>
             collection.where('listId', '==', match.params.listId)
