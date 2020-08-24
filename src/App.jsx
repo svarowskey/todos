@@ -25,7 +25,8 @@ export default function App() {
         <AppContent>
         <Switch>
             <Route path="/:listId" component={TodoList}/>
-          </Switch>
+            <Route path="/todos/:listId" component={TodoList}/>
+        </Switch>
         </AppContent>
       </div>
     </DBContext.Provider>
