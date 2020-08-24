@@ -2,9 +2,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import {
     List, Typography, Spinner
 } from 'mdc-react';
-import DBContext from '../../context/db';
-import TodoListItem from '../TodoListItem';
-import './index.scss';
+import DBContext from 'context/db';
+import TodoListItem from 'components/TodoListItem';
+import 'components/TodoList/index.scss';
 
 export default function TodoList({ match }) {
     const [todos, setTodos] = useState([]);
