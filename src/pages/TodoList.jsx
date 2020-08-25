@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import useApi from 'hooks/api';
 import TodoList from 'components/TodoList';

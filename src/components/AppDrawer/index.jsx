@@ -47,7 +47,7 @@ export default function AppDrawer({ lists }) {
                             <ListItem
                                 component={NavLink}
                                 to={item.id}
-                                key={item.key}
+                                key={item.id}
                             >
                                 <ListItemGraphic>
                                     <Icon>list</Icon>

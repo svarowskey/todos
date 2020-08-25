@@ -13,12 +13,11 @@ export default function TodoForm({ onSubmit }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        // console.log(title);
         onSubmit(title);
         setTitle('');
     }
 
-    function handleFocus(event) {
+    function handleFocus() {
          if (focusClass === "") {
              setFocusClass('mdc-list-item--focus');
          } else {
@@ -26,7 +25,7 @@ export default function TodoForm({ onSubmit }) {
          }
     }
 
-    function handleBlur(event) {
+    function handleBlur() {
         if (focusClass === "") {
             setFocusClass('mdc-list-item--focus');
         } else {
