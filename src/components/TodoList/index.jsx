@@ -6,7 +6,12 @@ import {
 import TodoListItem from 'components/TodoListItem';
 import 'components/TodoList/index.scss';
 
-export default function TodoList({ list, todos, onDelete }) {
+export default function TodoList({
+    list,
+    todos,
+    onUpdate,
+    onDelete,
+}) {
     return (
         <div className="todo-list">
             <Typography className="todo-list__title"
@@ -17,6 +22,7 @@ export default function TodoList({ list, todos, onDelete }) {
                     <TodoListItem
                         key={todo.id}
                         todo={todo}
+                        onUpdate={onUpdate}
                         onDelete={onDelete}
                     />
                 )}

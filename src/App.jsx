@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import * as api from 'api';
-import DBContext from 'context/db';
+import useApi from 'hooks/api';
 import AppDrawer from 'components/AppDrawer';
 import AppContent from 'components/AppContent';
 import TodoList from 'pages/TodoList'
@@ -9,15 +8,10 @@ import TodoList from 'pages/TodoList'
 import 'App.scss';
 
 export default function App() {
-  const [lists, setLists] = useState([]);
-
-  useEffect(() => {
-    api.getLists().then(setLists);
-  }, []);
+  const { data: { lists } } = useApi();
 
   return (
-    <DBContext.Provider value={{ lists, ...api }}>
-      <div className="app">
+    <div className="app">
         <AppDrawer 
           lists={lists}
         />
@@ -29,6 +23,5 @@ export default function App() {
           </Switch>
         </AppContent>
       </div>
-    </DBContext.Provider>
   );
 }

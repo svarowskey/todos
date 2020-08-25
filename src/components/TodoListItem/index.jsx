@@ -8,15 +8,22 @@ import 'components/TodoListItem/index.scss';
 
 export default function TodoListItem({
     todo, 
-    onCompleteChange,
+    onUpdate,
     onDelete
  }) {
+    function handleChange(completed, e, a) {
+        onUpdate(todo.id, {
+            ...todo,
+            completed: e,
+        });
+    }
+
     return (
         <ListItem className="todo-list-item">
             <ListItemGraphic>
                 <Checkbox 
                     checked={todo.completed}
-                    onChange={onCompleteChange}
+                    onChange={handleChange}
                 />
             </ListItemGraphic>
 

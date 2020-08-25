@@ -1,36 +1,33 @@
 import React, { useState, useContext, useEffect } from 'react';
 
-import DBContext from 'context/db';
+import useApi from 'hooks/api';
 import TodoList from 'components/TodoList';
 import TodoForm from 'components/TodoForm';
 import 'pages/index.scss';
 
 export default function TodoListPage({ match }) {
-    const db = useContext(DBContext);
-    const [todos, setTodos] = useState([]);
+    const { data: { lists, todos }, actions } = useApi();
  
     useEffect(() => {
-
-        db.getListTodos(match.params.listId).then(setTodos);
-    }, [db, match.params.listId]);
-
-    const list = db.lists.find(list => list.id === match.params.listId);
+        actions.getListTodos(match.params.listId);
+    }, [actions, match.params.listId]);
     
     function handleSubmit(title) {
-        db.createTodo({
+        actions.createTodo({
             title,
             listId: list.id
-        }).then(todo => {
-            setTodos([...todos, todo])
         });
     }
 
     function handleDelete(todoId) {
-        db.deleteTodo(todoId)
-        .then(todoId => {
-            setTodos([...todos.filter(t => t.id !== todoId)])
-        });
+        actions.deleteTodo(todoId);
     }
+
+    function handleUpdate(todoId, data) {
+        actions.updateTodo(todoId, data);
+    }
+
+    const list = lists.find(list => list.id === match.params.listId);
 
     if (typeof list !== 'object') return "";
 
@@ -39,6 +36,7 @@ export default function TodoListPage({ match }) {
             <TodoList 
                 list={list}
                 todos={todos}
+                onUpdate={handleUpdate}
                 onDelete={handleDelete}
             />
 

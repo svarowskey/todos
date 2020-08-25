@@ -8,10 +8,15 @@
     
     .mdc-text-field {
         width: 100%;
+        padding: 0;
     }
 
     .mdc-floating-label--float-above {
         display: none;
+    }
+
+    .mdc-list-item--focus .mdc-list-item__ripple::before {
+        opacity: .07;
     }
     
     .mdc-line-ripple {

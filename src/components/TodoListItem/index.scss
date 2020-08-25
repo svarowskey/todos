@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 .todo-list-item {
     background-color: white;
     margin-top: 2px;
@@ -11,4 +13,8 @@
     .mdc-list-item__text {
         flex: 1;
     }
+}
+
+:not(.mdc-list-item--disabled).mdc-list-item:hover .mdc-list-item__ripple::before {
+    opacity: $opacityListItemOnHover;
 }
