@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import useApi from 'hooks/api';
 import AppDrawer from 'components/AppDrawer';
 import AppContent from 'components/AppContent';
@@ -20,6 +20,7 @@ export default function App() {
           <Switch>
             <Route path="/todos/:listId" component={TodoList}/>
             <Route path="/:listId" component={TodoList}/>
+            <Redirect from="*" to="/" />
           </Switch>
         </AppContent>
       </div>
