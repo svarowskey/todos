@@ -1,5 +1,4 @@
 .todo-form {
-    background-color: white;
     margin-top: 2px;
 
     .mdc-list {
@@ -13,6 +12,10 @@
 
     .mdc-floating-label--float-above {
         display: none;
+    }
+
+    .mdc-list-item__ripple {
+        background-color: white;
     }
 
     .mdc-list-item--focus .mdc-list-item__ripple::before {

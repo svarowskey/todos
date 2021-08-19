@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function AppDrawer(props) {
     const classes = useStyles();
     return(
-        <div>
+        <div className='menu_container'>
             <div className={classes.toolbar}>React Todo</div>
             <Divider />
             <ListGroup>

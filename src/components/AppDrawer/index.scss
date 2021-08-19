@@ -1,9 +1,22 @@
 @import "./src/variables";
 
+.menu_container {
+  height: inherit;
+}
+
 .mdc-list-group {
   height: calc(100% - 75px);
-  background: rgba($color: #000000, $alpha: $opacityAppContent);
+  background: rgba($color: #000000, $alpha: $opacityMenuGroup);
+
   .mdc-list {
     margin-top: 10px;
+
+    .mdc-list-item {
+      background-color: white;
+      margin: 4px 0;
+    }
+    .mdc-list-item:hover {
+      background-color: $colorListItemOnHover;
+    }
   }
 }

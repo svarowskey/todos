@@ -18,3 +18,11 @@
 :not(.mdc-list-item--disabled).mdc-list-item:hover .mdc-list-item__ripple::before {
     opacity: $opacityListItemOnHover;
 }
+
+.mdc-list-item {
+    border-radius: 12px;
+}
+
+a.mdc-list-item:hover {
+    background-color: $colorListItemOnHover;
+}
