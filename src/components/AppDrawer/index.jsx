@@ -6,61 +6,74 @@ import {
     List, ListItem, ListItemGraphic, ListItemText ,
     ListGroup, ListDivider
 } from 'mdc-react';
+import MenuIcon from '@material-ui/icons/Menu';
+import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+import {AppBar, CssBaseline, Divider, Hidden, IconButton, Toolbar} from "@material-ui/core";
 
-export default function AppDrawer({ lists }) {
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        drawer: {
+            [theme.breakpoints.up('sm')]: {
+                width: drawerWidth,
+                flexShrink: 0,
+            },
+        },
+        // necessary for content to be below app bar
+        toolbar: theme.mixins.toolbar,
+    }),
+);
+
+export default function AppDrawer(props) {
+    const classes = useStyles();
     return(
-        <Drawer
-            id="app-drawer"
-        >
-            <DrawerHeader 
-                title="React Todo"
-            />
+        <div>
+            <div className={classes.toolbar} />
+            <Divider />
+            <ListGroup>
+                <List>
+                    {[
+                        { title: 'Задачи', icon: 'home', to: "/" },
+                        { title: 'Важно', icon: 'star', to: '/important' },
+                        { title: 'Запланированные', icon: 'event', to: "/planned" }
+                    ].map(item=>
+                        <ListItem
+                            component={NavLink}
+                            to={item.to}
+                            key={item.icon}
+                        >
+                            <ListItemGraphic>
+                                <Icon>{ item.icon }</Icon>
+                            </ListItemGraphic>
 
-            <DrawerContent>
-                <ListGroup>
-                    <List>
-                        {[
-                            { title: 'Задачи', icon: 'home', to: "/" },
-                            { title: 'Важно', icon: 'star', to: '/important' },
-                            { title: 'Запланированные', icon: 'event', to: "/planned" }
-                        ].map(item=> 
-                            <ListItem
-                                component={NavLink}
-                                to={item.to}
-                                key={item.icon}
-                            >
-                                <ListItemGraphic>
-                                    <Icon>{ item.icon }</Icon>
-                                </ListItemGraphic>
+                            <ListItemText>
+                                { item.title }
+                            </ListItemText>
+                        </ListItem>
+                    )}
+                </List>
 
-                                <ListItemText>
-                                    { item.title }
-                                </ListItemText>
-                            </ListItem>
-                            )}
-                    </List>
-                    
-                    <ListDivider element="hr" />
+                <Divider />
 
-                    <List>
-                        {lists.map(item=> 
-                            <ListItem
-                                component={NavLink}
-                                to={item.id}
-                                key={item.id}
-                            >
-                                <ListItemGraphic>
-                                    <Icon>list</Icon>
-                                </ListItemGraphic>
+                <List>
+                    {props.lists.map(item=>
+                        <ListItem
+                            component={NavLink}
+                            to={item.id}
+                            key={item.id}
+                        >
+                            <ListItemGraphic>
+                                <Icon>list</Icon>
+                            </ListItemGraphic>
 
-                                <ListItemText>
-                                    { item.title }
-                                </ListItemText>
-                            </ListItem>
-                            )}
-                    </List>
-                </ListGroup>
-            </DrawerContent>
-        </Drawer>
+                            <ListItemText>
+                                { item.title }
+                            </ListItemText>
+                        </ListItem>
+                    )}
+                </List>
+            </ListGroup>
+        </div>
     );
 }
