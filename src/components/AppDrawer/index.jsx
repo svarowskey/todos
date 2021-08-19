@@ -1,14 +1,13 @@
+import './index.scss'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
-    Drawer, DrawerHeader, DrawerContent,
     Icon,
     List, ListItem, ListItemGraphic, ListItemText ,
-    ListGroup, ListDivider
+    ListGroup
 } from 'mdc-react';
-import MenuIcon from '@material-ui/icons/Menu';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
-import {AppBar, CssBaseline, Divider, Hidden, IconButton, Toolbar} from "@material-ui/core";
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import {Divider} from "@material-ui/core";
 
 const drawerWidth = 240;
 
@@ -29,33 +28,9 @@ export default function AppDrawer(props) {
     const classes = useStyles();
     return(
         <div>
-            <div className={classes.toolbar} />
+            <div className={classes.toolbar}>React Todo</div>
             <Divider />
             <ListGroup>
-                <List>
-                    {[
-                        { title: 'Задачи', icon: 'home', to: "/" },
-                        { title: 'Важно', icon: 'star', to: '/important' },
-                        { title: 'Запланированные', icon: 'event', to: "/planned" }
-                    ].map(item=>
-                        <ListItem
-                            component={NavLink}
-                            to={item.to}
-                            key={item.icon}
-                        >
-                            <ListItemGraphic>
-                                <Icon>{ item.icon }</Icon>
-                            </ListItemGraphic>
-
-                            <ListItemText>
-                                { item.title }
-                            </ListItemText>
-                        </ListItem>
-                    )}
-                </List>
-
-                <Divider />
-
                 <List>
                     {props.lists.map(item=>
                         <ListItem
@@ -64,7 +39,7 @@ export default function AppDrawer(props) {
                             key={item.id}
                         >
                             <ListItemGraphic>
-                                <Icon>list</Icon>
+                                <Icon>{ item.title === 'Магазин' ? 'shopping_cart' : 'list' }</Icon>
                             </ListItemGraphic>
 
                             <ListItemText>

@@ -39,7 +39,7 @@ export default function TodoForm({ onSubmit }) {
                 <ListItem className={focusClass}>
                     <TextField 
                         ref={textInput}
-                        label="Что нужно сделать..."
+                        label="Что нужно купить..."
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                         onFocus={handleFocus}

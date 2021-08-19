@@ -3,10 +3,10 @@
 .todo-list-item {
     background-color: white;
     margin-top: 2px;
+    display: flex;
+    align-items: center;
 
     .mdc-list-item__graphic {
-        width: 18px;
-        height: 18px;
         margin-right: 1rem;
     }
 
