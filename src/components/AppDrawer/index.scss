@@ -1,4 +1,8 @@
+@import "./src/variables";
+
 .mdc-list-group {
+  height: calc(100% - 75px);
+  background: rgba($color: #000000, $alpha: $opacityAppContent);
   .mdc-list {
     margin-top: 10px;
   }

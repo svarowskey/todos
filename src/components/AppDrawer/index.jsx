@@ -37,6 +37,7 @@ export default function AppDrawer(props) {
                             component={NavLink}
                             to={item.id}
                             key={item.id}
+                            onClick={props.clickFunc}
                         >
                             <ListItemGraphic>
                                 <Icon>{ item.title === 'Магазин' ? 'shopping_cart' : 'list' }</Icon>

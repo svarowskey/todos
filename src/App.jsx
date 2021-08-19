@@ -4,7 +4,6 @@ import useApi from 'hooks/api';
 import AppDrawer from 'components/AppDrawer';
 import AppContent from 'components/AppContent';
 import TodoList from 'pages/TodoList'
-
 import 'App.scss';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -103,6 +102,7 @@ export default function App(props: Props) {
                   >
                       <AppDrawer
                           lists={lists}
+                          clickFunc={handleDrawerToggle}
                       />
                   </Drawer>
               </Hidden>
